@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.03f;
+    [SerializeField] private float speed = 0.01f;
     [SerializeField] private KeyCode moveUp = KeyCode.W; 
     [SerializeField] private KeyCode moveDown = KeyCode.S; 
     [SerializeField] private KeyCode moveLeft= KeyCode.A;
@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
         {
             rotation -= angle;
 
-            transform.Rotate(0, 0, rotation);
+            transform.Rotate(0, 0, rotation * Time.deltaTime * 1000);
         }
 
         // Rotar hacia la derecha
@@ -45,31 +45,31 @@ public class Movement : MonoBehaviour
         {
             rotation += angle;
 
-            transform.Rotate(0, 0, rotation);
+            transform.Rotate(0, 0, rotation * Time.deltaTime * 1000);
         }
 
         // Movimiento hacia arriba
         if (Input.GetKey(moveUp))
         {
-            pos.y += speed;
+            pos.y += speed * Time.deltaTime * 1000;
         }
 
         // Movimiento hacia la izquierda
         if (Input.GetKey(moveLeft))
         {
-            pos.x -= speed;
+            pos.x -= speed * Time.deltaTime * 1000; ;
         }
 
         // Movimiento hacia abajo
         if (Input.GetKey(moveDown))
         {
-            pos.y -= speed;
+            pos.y -= speed * Time.deltaTime * 1000; ;
         }
 
         // Movimiento hacia la derecha
         if (Input.GetKey(moveRight))
         {
-            pos.x += speed;
+            pos.x += speed * Time.deltaTime * 1000; ;
         }
 
         // Actualiza la posición del objeto
